@@ -20,7 +20,7 @@
 <div id="footer">
 <title>footer</title>
 
-<h3> shopping cart</h3>
+
 </div>
 
 </head>

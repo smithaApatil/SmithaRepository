@@ -1,6 +1,8 @@
 package com.eval.coronakit.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -39,8 +41,14 @@ public class UserController {
 	
 	@RequestMapping("/show-kit")
 	public String showKit(Model model) {
-		model.addAttribute("products", productService.getAllProducts());
-		return "show-all-item-user";
+		@SuppressWarnings("unchecked")
+		Map<Integer, KitDetail> cart = (Map<Integer, KitDetail>) session.getAttribute("cart");
+		if (null != cart) {
+			List<ProductMaster> selectedProducts = new ArrayList<ProductMaster>();
+			cart.forEach((k, v) -> selectedProducts.add(productService.getProductById(k)));
+			model.addAttribute("product", selectedProducts);
+		}
+		return "show-cart";
 	}
 
 	@RequestMapping("/show-list")

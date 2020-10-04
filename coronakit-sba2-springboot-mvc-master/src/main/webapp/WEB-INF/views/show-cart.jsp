@@ -19,10 +19,10 @@
 		&nbsp;&nbsp;<li class="nav-item"><a class="btn btn-sm btn-info" href="${pageContext.request.contextPath}/user/show-list">Add Products</a></li>
 	</ul>
 
-	<h1 align="center" style="font: normal; font-size: 20px; color: black;">shopping cart</h1>
+	<h1 align="left" style="font: normal; font-size: 20px; color: blue;">Shopping cart</h1>
 	<c:choose>
 		<c:when test="${products==null || products.isEmpty() }">
-			<div align="center" style="font: normal; font-size: 20px; color: blue;">No products Add to cart!!</div>
+			<div align="left" style="font: normal; font-size: 20px; color: blue;">No products available in cart!!</div>
 		</c:when>
 		<c:otherwise>
 			<div align="center">

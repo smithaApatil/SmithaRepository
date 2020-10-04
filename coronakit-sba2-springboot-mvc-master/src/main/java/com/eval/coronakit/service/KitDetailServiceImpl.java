@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.eval.coronakit.dao.KitDetailRepository;
 import com.eval.coronakit.entity.KitDetail;
@@ -15,6 +16,7 @@ public class KitDetailServiceImpl implements KitDetailService {
 	KitDetailRepository repository;
 	
 	@Override
+	@Transactional
 	public KitDetail addKitItem(KitDetail kitItem) {	
 		if(null!=kitItem)
 		repository.save(kitItem);
@@ -22,14 +24,12 @@ public class KitDetailServiceImpl implements KitDetailService {
 }
 	@Override
 	public KitDetail getKitItemById(int itemId) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.getOne(itemId);
 	}
 
 	@Override
 	public List<KitDetail> getAllKitItemsOfAKit(int kitId) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findAll();
 	}
 
 }
